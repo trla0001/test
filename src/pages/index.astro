@@ -21,10 +21,13 @@ import "../styles/tobii.min.css";
     <section class="max-w-xl mx-auto mt-32 prose" id="titel">
       <h2 class="text-6xl md:text-9xl text-center">Uperfekt er perfekt</h2>
     </section>
-    <section class="max-w-4xl mx-auto mt-32" id="herovideo">
+    <section class="max-w-4xl mx-auto mt-32" id="herovideo" x-data>
       <video width="1280" height="960" autoplay muted loop>
         <source src="pierre-falcke-video.mp4" type="video/mp4" />
       </video>
+      <audio x-ref="trykforatafspillelyd">
+        <source src="mixkit-epic-orchestra-transition-2290.mp3" type="audio/mpeg" />
+      </audio>
     </section>
     <section class="max-w-xl mx-auto mt-32 prose" id="manchet">
       <p class="text-xl">Pierre Falcke. Du ved formentligt ikke hvem han er. Men indtil for kort tid siden, så du hans værker et par gange om dagen, hver dag, året rundt. Pierre Falcke var en af verdens bedst sælgende stock-fotografer, og han solgte over 2 millioner fotos om året. Men Pierre kunne ikke drømme om at bruge sine egne fotos - faktisk kan han ikke fordrage sit eget arbejde.</p>
@@ -138,11 +141,12 @@ import "../styles/tobii.min.css";
       </div>
     </section>
   </article>
-  <Link href="#" target="_self">Hej med dig</Link>
 </MainLayout>
-<script is:inline src="/tobii.min.js">
-  scroll(animate(".progress-bar", { scaleY: [0, 1] }));
-</script>
+<script is:inline src="/tobii.min.js"></script>
 <script defer>
   const tobii = new Tobii();
+</script>
+<script>
+  import { animate, stagger, inView, scroll, timeline } from "motion";
+  scroll(animate(".progress-bar", { scaleY: [0, 1] }));
 </script>
