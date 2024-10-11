@@ -7,7 +7,7 @@ import apoteket from "../assets/images/apoteket.jpg";
 import arbejde from "../assets/images/arbejde.jpg";
 import glitch from "../assets/images/glitch.jpg";
 import godtarbejde from "../assets/images/godt-arbejde.jpg";
-import lidtifem from "../assets/images/lidtifem-pierre-falcke.jpg";
+import lidtifembog from "../assets/images/lidtifem-bog.png";
 import smena from "../assets/images/lomo-smena-17.jpg";
 import overouticm from "../assets/images/over-out-icm.jpeg";
 import pierre from "../assets/images/pierre.jpeg";
@@ -125,14 +125,20 @@ import "../styles/tobii.min.css";
         </div>
         <div class="flex items-center h-screen w-100 bg-cover bg-center sticky top-0" style="background-image: url('tynd-film.jpg')"><p class="w-3/4 mx-auto p-10 bg-slate-50 text-xl stickyparallax2">Som Pierre selv udtrykker det: <span class="italic">“Det interessante ligger i fejlen. Et foto med masser af fejl er interessant. Jeg eksperimenterer med udstyr og teknik, og skaber nye visuelle udtryk. Det uperfekte er perfekt.”</span></p></div>
       </div>
-      <div class="max-w-xl mx-auto my-32 prose">
+      <div class="max-w-5xl mx-auto my-32 prose">
         <p>Karrieren begynder også så småt også at gå den rette vej: Pierre er begyndt at sælge fotokunst på nettet, og har udgivet sin første foto-bog med titlen “Lidt i fem,” som er en fotografisk odyssé om at slæbe en brandert hjem i de tidlige morgentimer. I forbindelse med udgivelsen af bogen, har han en udstilling på vej i det Kongelige Biblioteks fotoudstilling.</p>
         <p>Som Pierre forklarer det: <span class="italic">“Nu kan jeg leve livet igen. Jeg føler mig frisk. Jeg føler mig fri. Jeg føler mig genfødt.”</span></p>
         <div>
-          <a href="lidtifem-pierre-falcke.jpg" class="lightbox" alt="">
+          <div class="parallaxgrafik fullwidthsection">
+            <div class="mt-8 h-screen w-full bg-cover bg-center grid items-end justify-center overflow-hidden" style="background-image: url('lidtifem-bg.png');">
+              <Image src={lidtifembog} alt="" class="w-80 parallaxgrafik1" />
+            </div>
+          </div>
+
+          <!-- <a href="lidtifem-pierre-falcke.jpg" class="lightbox" alt="">
             <Image src={lidtifem} alt="" class="my-0" />
             <figcaption>Lidt i fem - ny bog af Pierre Falcke</figcaption>
-          </a>
+          </a> -->
         </div>
       </div>
     </section>
@@ -144,20 +150,35 @@ import "../styles/tobii.min.css";
   </script>
   <script>
     import { animate, stagger, inView, scroll, timeline } from "motion";
-    scroll(animate(".progress-bar", { scaleX: [0, 1] })); // Progress-bar
-    animate("body", { opacity: [0, 1] }, { duration: 1 }); //Entrance animation
+
+    // Progress-bar
+    scroll(animate(".progress-bar", { scaleX: [0, 1] }));
+
+    //Entrance animation
+    animate("body", { opacity: [0, 1] }, { duration: 1 });
     inView("#manchet", () => {
       animate(".staggeranimation p", { opacity: [0, 1] }, { delay: stagger(1, { start: 2 }) });
     });
 
+    // Parallax m. tekstboks
     scroll(animate(".parallaxelement", { y: [-300, 0] }), {
       target: document.querySelector(".parallaxelement"),
-    }); // Parallax m. tekstboks
+    });
+
+    // Sticky scroll 1
     scroll(animate(".stickyparallax1", { y: [-300, 0] }), {
       target: document.querySelector(".stickyparallax1"),
-    }); // Sticky sroll
+    });
+
+    // Sticky scroll 2
     scroll(animate(".stickyparallax2", { y: [-300, 0] }), {
       target: document.querySelector(".stickyparallax1"),
-    }); // Sticky sroll
+    });
+
+    // parallaxgrafik
+    scroll(animate(".parallaxgrafik1", { y: [400, -600] }), {
+      target: document.querySelector(".parallaxgrafik"),
+      offset: ["start end", "end start"],
+    });
   </script>
 </MainLayout>
